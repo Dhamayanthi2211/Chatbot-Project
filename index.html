@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smart Motivational Chatbot</title>
+    <title>Smart Chatbot</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -36,12 +36,15 @@
 
           setChatMessages([
             ...newChatMessages,
-            { message: "Thinking...", sender: "robot", id: crypto.randomUUID() },
+            {
+              message: "Thinking...",
+              sender: "robot",
+              id: crypto.randomUUID(),
+            },
           ]);
 
           let response = await Chatbot.getResponseAsync(inputText);
 
-       
           if (inputText.toLowerCase().includes("motivational quote")) {
             const quotes = [
               "💪 Believe in yourself — you’re stronger than you think!",
@@ -50,8 +53,7 @@
               "🌈 Every day is a new chance to grow and shine.",
               "✨ Don’t stop until you’re proud of yourself.",
             ];
-            response =
-              quotes[Math.floor(Math.random() * quotes.length)];
+            response = quotes[Math.floor(Math.random() * quotes.length)];
           }
 
           setChatMessages([
@@ -123,9 +125,8 @@
           <div className="app-container">
             {chatMessages.length === 0 && (
               <p className="welcome-message">
-                👋 Hi! I’m your Smart Motivational Chatbot.  
-                Ask me anything — and if you ever feel low, just type  
-                <strong>“give me a motivational quote”</strong> ✨
+                👋 Hi! I’m your Smart Chatbot. Ask me anything — and if you ever
+                feel low, just type me and Lets connect ✨
               </p>
             )}
             <ChatMessages chatMessages={chatMessages} />
